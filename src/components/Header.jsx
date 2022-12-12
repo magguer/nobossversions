@@ -27,7 +27,7 @@ const Header = () => {
     <>
       <BurguerMenuBody activeMenu={burguerMenu} handleClick={handleClick} />
       <div className="w-full mt-0 flex">
-        <nav className=" fixed w-full flex top-0 justify-between items-center shadow-lg px-1 mobilL:px-5 py-2 bg-[#1a1a1a] text-white rounded-md">
+        <nav className="fixed w-full flex top-0 justify-between items-center shadow-lg px-1 mobilL:px-5 py-2 bg-gray-400 dark:bg-[#1a1a1a] text-white rounded-md">
           {/* Burguer Menu */}
           <div className="flex items-center gap-4">
             <div className="hidden tablet:flex" onClick={handleClick}>

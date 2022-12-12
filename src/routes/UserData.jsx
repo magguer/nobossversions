@@ -19,7 +19,7 @@ const UserData = () => {
 
   return (
     <SmoothieOpcIn>
-      <div className="bg-[#1a1a1a] grid gap-4 justify-items-center rounded-lg p-5 shadow-lg">
+      <div className="bg-gray-700 dark:bg-[#1a1a1a] grid gap-4 justify-items-center rounded-lg p-5 shadow-lg">
         <p>{user.email}</p>
         <div className="flex justify-center">
           <ButtonText1

@@ -3,7 +3,7 @@ const ProjectBody = ({ idProject, nameProject, rubroProject, imgProject }) => {
   return (
 
     <div
-      className="flex tablet:p-3 tablet:bg-[#242424] tablet:hover:bg-[#1c1c1c] transition-color duration-200 cursor-pointer"
+      className="flex tablet:p-3 tablet:bg-gray-600 tablet:hover:bg-gray-800 tablet:dark:bg-[#242424] tablet:dark:hover:bg-[#1c1c1c] transition-color duration-200 cursor-pointer"
     >
       <img
         className="w-10 tablet:w-16 rounded-full"

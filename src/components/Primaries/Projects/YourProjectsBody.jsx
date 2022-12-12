@@ -35,9 +35,8 @@ const YourProjectsBody = () => {
   return (
     <div>
       <div className="hidden tablet:flex" >
-      <ButtonBack textButton={"<"} onClick={handleYourProjectSize} />
       </div>
-      <div className="flex tablet:grid bg-[#1a1a1a] rounded-lg p-3 shadow-lg justify-center gap-3">
+      <div className="flex tablet:grid bg-gray-700 dark:bg-[#1a1a1a] rounded-lg p-3 shadow-lg justify-center gap-3">
         <img
           src="labels\tus_Proyectos.png"
           className="hidden tablet:flex w-8/12 mx-auto my-3"
@@ -56,7 +55,7 @@ const YourProjectsBody = () => {
 
         <div
           onClick={() => setShowCrateProject(true)}
-          className="flex cursor-pointer w-10 tablet:w-full p-1.5 tablet:p-5 rounded tablet:rounded-none bg-[#242424] hover:bg-[#1c1c1c] transition-color duration-200 justify-center items-center"
+          className="flex cursor-pointer w-10 tablet:w-full p-1.5 tablet:p-5 rounded tablet:rounded-none bg-gray-600 hover:bg-gray-800 dark:bg-[#242424] dark:hover:bg-[#1c1c1c] transition-color duration-200 justify-center items-center"
         >
           <span className="text-lg tablet:text-2xl">+</span>
         </div>

@@ -29,12 +29,18 @@ import LayoutContainerForm from "./Layouts/LayoutContainerForm";
 const App = () => {
   const { user } = useContext(UserContext);
 
-  if (user === false) {
-    return (
-      <div className="flex justify-center mt-28 h-full">
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
 
-      </div>
-    );
+  if (user === false) {
+    return <div className="flex justify-center mt-28 h-full"></div>;
   }
 
   return (

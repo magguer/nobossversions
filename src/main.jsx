@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import 'flowbite';
+import "flowbite";
 
 // Proveedores
 import UserProvider from "./context/UserProvider";
@@ -14,9 +14,12 @@ import App from "./App";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <UserProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </UserProvider>,
+  <body className=" bg-gray-500  text-white dark:bg-[#242424] h-screen" >
+    <UserProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </UserProvider>
+    
+  </body>
 );

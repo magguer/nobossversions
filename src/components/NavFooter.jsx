@@ -17,7 +17,7 @@ const NavFooter = () => {
   return (
     <>
 
-        <footer className=" tablet:hidden bottom-0 fixed w-full flex justify-center gap-8 items-center shadow-lg py-3 bg-[#1a1a1a] text-white">
+        <footer className=" tablet:hidden bottom-0 fixed w-full flex justify-center gap-8 items-center shadow-lg py-3 bg-gray-700 dark:bg-[#1a1a1a] text-white">
           {user ? (
             <>
               <div>
