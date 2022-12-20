@@ -1,22 +1,28 @@
+// Imports React
 import { useState } from "react";
+//Imports Transiciones
 import SmoothieOpcIn from "../../../transitions/SmoothieOpcIn";
+//Imports Componentes
 import ButtonCancelText1 from "../../Buttons/ButtonCancelText1";
 import ButtonText1 from "../../Buttons/ButtonText1";
 import FormInputsText from "../../Forms/FormInputsText";
-import useProjects from "../../../hooks/useProjects";
 import ButtonBack from "../../Buttons/ButtonBack1";
+//Imports Hooks
+import useProjects from "../../../hooks/useProjects";
 
 const CreateProjectBody1 = ({ crateProjectVisible, onClose }) => {
   const [nameProjectData, setNameProjectData] = useState("");
   const [rubroProjectData, setRubroProjectData] = useState("");
   const [imgProjectData, setImgProjectData] = useState("");
-  const { error, loading, addProject } = useProjects();
+  const { error, loading, addProject, addImageProject } = useProjects();
 
   if (!crateProjectVisible) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addProject(nameProjectData, rubroProjectData, imgProjectData);
+    const logoProject = await addImageProject(imgProjectData);
+    await addProject(nameProjectData, rubroProjectData, logoProject);
+
     onClose();
   };
 
@@ -24,10 +30,10 @@ const CreateProjectBody1 = ({ crateProjectVisible, onClose }) => {
     <SmoothieOpcIn>
       <div className="fixed inset-0">
         <div className="modal-flex-container flex items-center justify-center min-h-screen text-center">
-          <div className="modal-bg-container fixed inset-0 bg-gray-500 dark:bg-[#242424] bg-opacity-75"></div>
-          <div className="modal-container  mb-16 tablet:mb-0 inline-block align-bottom bg-gray-700 dark:bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg transform transition-all">
+          <div className="modal-bg-container fixed inset-0 bg-lightbgsecondary dark:bg-[#242424] bg-opacity-60  dark:bg-opacity-60"></div>
+          <div className="modal-container  mb-16 tablet:mb-0 inline-block align-bottom bg-lightbgprimary dark:bg-darkbgprimary rounded-lg overflow-hidden shadow-lg transform transition-all">
             <ButtonBack textButton={"<"} onClick={onClose} />
-            <div className="modal-wrapper dark:bg-[#1a1a1a] p-10">
+            <div className="modal-wrapper dark:bg-darkbgprimary p-10">
               <div className="modal-wrapper-flex ">
                 {/*       Formulario */}
                 <form onSubmit={handleSubmit}>
@@ -44,10 +50,10 @@ const CreateProjectBody1 = ({ crateProjectVisible, onClose }) => {
                       onChange={(e) => setRubroProjectData(e.target.value)}
                       placeholder="Rubro del Proyecto"
                     />
-                    <FormInputsText
+                    <input
                       type="file"
-                      value={imgProjectData}
-                      onChange={(e) => setImgProjectData(e.target.value)}
+                      className="mb-5"
+                      onChange={(e) => setImgProjectData(e.target.files[0])}
                     />
                   </div>
 

@@ -6,6 +6,7 @@ import "flowbite";
 
 // Proveedores
 import UserProvider from "./context/UserProvider";
+import ProjectProvider from "./context/ProjectProvider";
 
 // Componentes
 import App from "./App";
@@ -14,12 +15,13 @@ import App from "./App";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <body className=" bg-gray-500  text-white dark:bg-[#242424] h-screen" >
+  <div className="scrollbar bg-lightbgunder text-white dark:bg-darkbgunder h-screen w-full fixed">
     <UserProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ProjectProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ProjectProvider>
     </UserProvider>
-    
-  </body>
+  </div>
 );

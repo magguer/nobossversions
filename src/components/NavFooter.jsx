@@ -17,18 +17,18 @@ const NavFooter = () => {
   return (
     <>
 
-        <footer className=" tablet:hidden bottom-0 fixed w-full flex justify-center gap-8 items-center shadow-lg py-3 bg-gray-700 dark:bg-[#1a1a1a] text-white">
+        <footer className=" tablet:hidden bottom-0 fixed w-full flex justify-center gap-8 items-center shadow-lg py-3 bg-lightbgprimary dark:bg-darkbgprimary text-white">
           {user ? (
             <>
               <div>
                 <NavLink to="/userdata">
-                  <ButtonIcon1 src="src\assets\images\iconos\user-icon.png" />
+                  <ButtonIcon1 src="iconos\user-icon.png" />
                 </NavLink>
               </div>
               <div className="justify-self-end">
                 <NavLink to="/market">
                   <ButtonIcon1
-                    src="src\assets\images\iconos\market-icon.png"
+                    src="iconos\market-icon.png"
                     alt="marketIcon"
                   />
                 </NavLink>
@@ -36,7 +36,7 @@ const NavFooter = () => {
               <div>
                 <NavLink to="/management">
                   <ButtonIcon1
-                    src="src\assets\images\iconos\home-icon.png"
+                    src="iconos\home-icon.png"
                     alt="homeIcon"
                   />
                 </NavLink>
@@ -47,7 +47,7 @@ const NavFooter = () => {
               <div className="justify-self-end">
                 <NavLink to="/market">
                   <ButtonIcon1
-                    src="src\assets\images\iconos\market-icon.png"
+                    src="iconos\market-icon.png"
                     alt="marketIcon"
                   />
                 </NavLink>
@@ -57,7 +57,7 @@ const NavFooter = () => {
                   <div>
                     <ButtonTextIcon1
                       textButton={"Acceder"}
-                      src="src\assets\images\iconos\user-icon.png"
+                      src="iconos\user-icon.png"
                     />
                   </div>
                 </NavLink>

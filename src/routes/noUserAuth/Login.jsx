@@ -45,7 +45,7 @@ const Login = () => {
     try {
       setLoading(true);
       await loginEmailUser(email, password);
-      navigate("/userdata");
+      navigate("/management");
     } catch (error) {
       console.log(error.code);
       const { code, message } = firebaseErrors(error.code);
@@ -56,7 +56,7 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gray-700 dark:bg-[#1a1a1a] px-10 py-5 rounded-lg">
+    <div className="bg-lightbgprimary dark:bg-darkbgprimary px-10 py-5 rounded-lg">
       <TitleForm textTitle={"Ingreso de Usuario"} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormErrors error={errors.firebase} />

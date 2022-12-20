@@ -7,13 +7,14 @@ import { NavLink, Link } from "react-router-dom";
 
 //Contexto
 import { UserContext } from "../context/UserProvider";
-import BuscadorHeader from "./Buscadores/BuscadorHeader";
-import BurguerButton from "./Buttons/ButtonBurguer";
+import { ProjectContext } from "../context/ProjectProvider";
 
 //Componentes
 import ButtonIcon1 from "./Buttons/ButtonIcon1";
 import ButtonTextIcon1 from "./Buttons/ButtonTextIcon1";
 import BurguerMenuBody from "./Secondaries/BurguerMenuBody";
+import BuscadorHeader from "./Buscadores/BuscadorHeader";
+import BurguerButton from "./Buttons/ButtonBurguer";
 
 const Header = () => {
   const { user } = useContext(UserContext);
@@ -27,7 +28,7 @@ const Header = () => {
     <>
       <BurguerMenuBody activeMenu={burguerMenu} handleClick={handleClick} />
       <div className="w-full mt-0 flex">
-        <nav className="fixed w-full flex top-0 justify-between items-center shadow-lg px-1 mobilL:px-5 py-2 bg-gray-400 dark:bg-[#1a1a1a] text-white rounded-md">
+        <nav className="fixed w-full flex top-0 justify-between items-center shadow-lg px-1 mobilL:px-5 py-2 bg-lightbgprimary dark:bg-darkbgprimary text-white roundedb-md">
           {/* Burguer Menu */}
           <div className="flex items-center gap-4">
             <div className="hidden tablet:flex" onClick={handleClick}>
@@ -58,10 +59,7 @@ const Header = () => {
           <div className="hidden tablet:flex gap-4 items-center ">
             <div className="justify-self-end">
               <NavLink to="/market">
-                <ButtonIcon1
-                  src="iconos\market-icon.png"
-                  alt="marketIcon"
-                />
+                <ButtonIcon1 src="iconos\market-icon.png" alt="marketIcon" />
               </NavLink>
             </div>
             {user ? (
@@ -73,10 +71,7 @@ const Header = () => {
                 </div>
                 <div>
                   <NavLink to="/management">
-                    <ButtonIcon1
-                      src="iconos\home-icon.png"
-                      alt="homeIcon"
-                    />
+                    <ButtonIcon1 src="iconos\home-icon.png" alt="homeIcon" />
                   </NavLink>
                 </div>
               </>
@@ -84,7 +79,6 @@ const Header = () => {
               <>
                 <div>
                   <NavLink to="/login">
-
                     <div className="hidden tablet:block">
                       <ButtonTextIcon1
                         textButton={"Acceder"}

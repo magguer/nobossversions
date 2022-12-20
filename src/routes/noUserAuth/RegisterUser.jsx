@@ -61,7 +61,7 @@ const RegisterUser = () => {
   const navigate = useNavigate();
 
   return (
-    <div  className="bg-gray-700 dark:bg-[#1a1a1a] px-10 py-5 rounded-lg">
+    <div  className="bg-lightbgprimary dark:bg-darkbgprimary px-10 py-5 rounded-lg">
       <TitleForm textTitle={"Registro de Usuario"} />
 
       <form onSubmit={handleSubmit(onSubmit)}>

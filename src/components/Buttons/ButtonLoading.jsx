@@ -3,7 +3,7 @@ function ButtonLoading() {
     <button
       disabled
       type="button"
-      className="text-white bg-gray-600 hover:bg-gray-800  focus:ring-2 focus:outline-none focus:ring-gray-800 dark:bg-[#242424] dark:hover:bg-[#1c1c1c] dark:focus:ring-[#2d2d2d] font-medium rounded-lg text-sm px-5 py-1.5 transition-color duration-200 text-center "
+      className="text-white bg-lightbuttonprimary hover:bg-lightbuttonhoverprimary focus:ring-2 focus:outline-none focus:ring-lightbuttonringprimary  dark:bg-darkbuttonprimary dark:hover:bg-darkbuttonhoverprimary dark:focus:ring-darkbuttonringprimary  font-medium rounded-lg text-sm px-5 py-1.5 transition-color duration-200 text-center "
     >
       <svg
         aria-hidden="true"

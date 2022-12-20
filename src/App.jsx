@@ -57,6 +57,7 @@ const App = () => {
           <Route path="/" element={<RequireAuth />}>
             <Route path="/userdata" element={<UserData />} />
             <Route path="/management" element={<ManagementRoute />}></Route>
+            <Route path="/:nameProject" element={<ManagementRoute />}></Route>
           </Route>
 
           {/* Ruta inexistentes (404) */}

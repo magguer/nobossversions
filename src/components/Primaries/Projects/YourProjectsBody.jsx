@@ -1,24 +1,29 @@
+//Imports React
 import { useState, useEffect } from "react";
-import useProjects from "../../../hooks/useProjects";
-import ButtonBack from "../../Buttons/ButtonBack1";
-
+//Imports Components
 import CreateProjectBody1 from "./CreateProjectBody1";
 import ProjectBody from "./ProjectBody";
+//Import Hoocks
+import useProjects from "../../../hooks/useProjects";
+import { Link, useParams } from "react-router-dom";
 
 const YourProjectsBody = () => {
+  const [expandedYourProjectsBody, setExpandedYourProjectsBody] =
+    useState(false);
   const [showCrateProject, setShowCrateProject] = useState(false);
-  const [yourProjectsSize, setYourProjectsSize] = useState(true);
   const handleOnCloseCreateProject = () => setShowCrateProject(false);
-  const { projects, error, loading, getProjects, deleteProjects } = useProjects();
+
+  const {
+    projects,
+    error,
+    loading,
+    getProjects,
+    getProject,
+  } = useProjects();
 
   useEffect(() => {
     getProjects();
   }, []);
-
-  const handleYourProjectSize = () => {
-    console.log(yourProjectsSize);
-    setYourProjectsSize(!yourProjectsSize)
-  }
 
   if (loading.getProjects)
     return (
@@ -28,45 +33,88 @@ const YourProjectsBody = () => {
       </div>
     );
 
-    const handleClickDeleteProject = async (projectId) => {
-      await deleteProjects(projectId)
-    }
+  const handleClickSendProject = async (projectId) => {
+    await getProject(projectId);
+  };
 
   return (
     <div>
-      <div className="hidden tablet:flex" >
-      </div>
-      <div className="flex tablet:grid bg-gray-700 dark:bg-[#1a1a1a] rounded-lg p-3 shadow-lg justify-center gap-3">
-        <img
-          src="labels\tus_Proyectos.png"
-          className="hidden tablet:flex w-8/12 mx-auto my-3"
-          alt=""
-        />
+      {expandedYourProjectsBody ? (
+        <div
+          onMouseEnter={() => setExpandedYourProjectsBody(true)}
+          onMouseLeave={() => setExpandedYourProjectsBody(false)}
+          className="hidden tablet:grid bg-lightbgprimary dark:bg-darkbgprimary rounded-lg p-3 shadow-lg justify-center gap-3 transition-all duration-500"
+        >
+          <img
+            src="labels\tus_proyectos_light.png"
+            className="w-8/12 mx-auto my-3 transition-all duration-500"
+            alt=""
+          />
 
-        {projects.map((project) => (
-          <div key={project.id} onClick={() => handleClickDeleteProject(project.id)}>
-            <ProjectBody
-              imgProject={project.imgProject}
-              nameProject={project.nameProject}
-              rubroProject={project.rubroProject}
+          {projects.map((project) => (
+            <Link to="/management`">
+              <div
+                key={project.id}
+                onClick={() => handleClickSendProject(project.id)}
+              >
+                <ProjectBody
+                  imgProject={project.imgProject}
+                  nameProject={project.nameProject}
+                  rubroProject={project.rubroProject}
+                />
+              </div>
+            </Link>
+          ))}
+
+          <div
+            onClick={() => setShowCrateProject(true)}
+            className=" text-white bg-lightbuttonprimary hover:bg-lightbuttonhoverprimary focus:ring-2 focus:outline-none focus:ring-lightbuttonringprimary  dark:bg-darkbuttonprimary dark:hover:bg-darkbuttonhoverprimary dark:focus:ring-darkbuttonringprimary flex cursor-pointer w-10 tablet:w-full p-1.5 tablet:p-5 rounded transition-all duration-200 justify-center items-center "
+          >
+            <span className="text-lg tablet:text-2xl">+</span>
+          </div>
+
+          <div>
+            <CreateProjectBody1
+              onClose={handleOnCloseCreateProject}
+              crateProjectVisible={showCrateProject}
             />
           </div>
-        ))}
-
+        </div>
+      ) : (
         <div
-          onClick={() => setShowCrateProject(true)}
-          className="flex cursor-pointer w-10 tablet:w-full p-1.5 tablet:p-5 rounded tablet:rounded-none bg-gray-600 hover:bg-gray-800 dark:bg-[#242424] dark:hover:bg-[#1c1c1c] transition-color duration-200 justify-center items-center"
+          onMouseEnter={() => setExpandedYourProjectsBody(true)}
+          onMouseLeave={() => setExpandedYourProjectsBody(false)}
+          className="grid bg-lightbgprimary dark:bg-darkbgprimary rounded-lg p-3 shadow-lg justify-center gap-3 transition-all duration-500"
         >
-          <span className="text-lg tablet:text-2xl">+</span>
-        </div>
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => handleClickSendProject(project.id)}
+            >
+              <ProjectBody
+                expandedYourProjectsBody
+                imgProject={project.imgProject}
+                nameProject={project.nameProject}
+                rubroProject={project.rubroProject}
+              />
+            </div>
+          ))}
 
-        <div>
-          <CreateProjectBody1
-            onClose={handleOnCloseCreateProject}
-            crateProjectVisible={showCrateProject}
-          />
+          {/*    <div
+            onClick={() => setShowCrateProject(true)}
+            className=" text-white bg-lightbuttonprimary hover:bg-lightbuttonhoverprimary focus:ring-2 focus:outline-none focus:ring-lightbuttonringprimary  dark:bg-darkbuttonprimary dark:hover:bg-darkbuttonhoverprimary dark:focus:ring-darkbuttonringprimary flex cursor-pointer w-full px-5 py-3 rounded duration-500 justify-center items-center transition-all "
+          >
+            <span className="text-lg tablet:text-2xl">+</span>
+          </div> */}
+
+          <div>
+            <CreateProjectBody1
+              onClose={handleOnCloseCreateProject}
+              crateProjectVisible={showCrateProject}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
