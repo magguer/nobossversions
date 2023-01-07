@@ -57,31 +57,31 @@ const NavFooter = () => {
           <>
             <div>
               <NavLink to="/userdata">
-                <ButtonIcon1 src="iconos\user-icon.png" />
+                <ButtonIcon1 src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficono%20usuario%20blanco.png?alt=media&token=3ad98721-d5d8-4ff6-907c-25c945a71d4d" />
               </NavLink>
             </div>
             <div>
               {project ? (
-                <NavLink to="/management">
+               
                   <div
-                    onContextMenu={handleProjectsBox}
+                    onClick={handleProjectsBox}
                   >
                     <ButtonIcon1 src={project.imgProject} alt="homeIcon" />
                   </div>
-                </NavLink>
+           
               ) : (
-                <NavLink to="/management">
+              
                 <div
-                  onContextMenu={handleProjectsBox}
+                  onClick={handleProjectsBox}
                 >
-                  <ButtonIcon1 src="iconos\home-icon.png" alt="homeIcon" />
+                  <ButtonIcon1 src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2F01-home-icon-blanco.png?alt=media&token=0aea7cfe-3a83-443d-a059-f04ec48449cd" alt="homeIcon" />
                 </div>
-                </NavLink>
+               
               )}
             </div>
             <div className="justify-self-end">
               <NavLink to="/usermarket">
-                <ButtonIcon1 src="iconos\market-icon.png" alt="marketIcon" />
+                <ButtonIcon1 src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Fcarrito%201.png?alt=media&token=9aad05a4-5039-40b8-9a24-585df898f7dd" alt="marketIcon" />
               </NavLink>
             </div>
           </>

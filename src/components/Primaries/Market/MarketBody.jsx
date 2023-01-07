@@ -22,7 +22,7 @@ const MarketBody = () => {
               setIdProject("");
             }}
           />
-          <div className="bg-lightbgprimary dark:bg-darkbgprimary grid justify-center rounded-lg p-5 shadow-lg">
+          <div className="bg-lightbgprimary text-center dark:bg-darkbgprimary grid justify-center rounded-lg p-5 shadow-lg">
             <TextH1 textTitle={"- Market -"} />
             <div className="grid justify-center">
               <TextH2 textTitle={project.nameProject} />
@@ -30,17 +30,17 @@ const MarketBody = () => {
             <div className="flex   gap-3 mt-4">
               <ButtonMarketBody2
                 textButton={"Nobox"}
-                src={"./iconos/Nobox.png"}
+                src={"https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2FNobox.png?alt=media&token=cd5e1e03-4d3b-42be-a5d3-7eaecc340a26"}
               />
               <ButtonMarketBody1
                 textButton={"Grupos de Descuento"}
-                src={"./iconos/menu-icon.png"}
+                src={"https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2Fmenu-icon.png?alt=media&token=2eecd4b3-2b72-49b7-88ef-5e78e62ece19"}
               />
             </div>
           </div>
         </div>
       ) : (
-        <div className="bg-lightbgprimary dark:bg-darkbgprimary grid justify-items-center rounded-lg p-5 shadow-lg">
+        <div className="bg-lightbgprimary text-center dark:bg-darkbgprimary grid justify-items-center rounded-lg p-5 shadow-lg">
           <TextH1 textTitle={"- Market -"} />
           <Paragraf1
             textTitle={
@@ -51,11 +51,11 @@ const MarketBody = () => {
             <div className="flex gap-3 mt-4">
               <ButtonMarketBody2
                 textButton={"Nobox"}
-                src={"./iconos/Nobox.png"}
+                src={"https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2FNobox.png?alt=media&token=cd5e1e03-4d3b-42be-a5d3-7eaecc340a26"}
               />
               <ButtonMarketBody1
                 textButton={"Grupos de Descuento"}
-                src={"./iconos/menu-icon.png"}
+                src={"https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2Fmenu-icon.png?alt=media&token=2eecd4b3-2b72-49b7-88ef-5e78e62ece19"}
               />
             </div>
           </div>

@@ -4,7 +4,7 @@ import SmoothieOpcIn from "../../transitions/SmoothieOpcIn";
 const PlanesRoute = () => {
   return (
     <SmoothieOpcIn>
-      <div className="bg-lightbgprimary dark:bg-darkbgprimary rounded-lg p-5 shadow-lg">
+      <div className="bg-lightbgprimary text-center dark:bg-darkbgprimary rounded-lg p-5 shadow-lg">
         <TextH1 textTitle={" - Planes Premium - "}/>
       </div>
     </SmoothieOpcIn>
