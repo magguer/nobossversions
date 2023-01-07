@@ -15,9 +15,14 @@
     "framer-motion": "^7.6.19",
     "gh-pages": "^4.0.0",
     "react": "^18.2.0",
+    "react-big-calendar": "^1.5.2",
+    "react-calendar": "^4.0.0",
     "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.1.1",
     "react-hook-form": "^7.40.0",
-    "react-router-dom": "^6.4.5"
+    "react-router-dom": "^6.4.5",
+    "react-select": "^5.7.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

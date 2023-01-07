@@ -1,23 +1,37 @@
 import { createContext, useState } from "react";
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
 import useProjects from "../hooks/useProjects";
-import YourProjectsBody from '../components/Primaries/Projects/YourProjectsBody'
 
 export const ProjectContext = createContext();
 
 const ProjectProvider = ({ children }) => {
-  
-  const { project, getProject } = useProjects();
+  const { getProject, projects, project } = useProjects();
+  const [idProject, setIdProject] = useState("");
 
   useEffect(() => {
-      getProject();
-  }, []);
+    getProject(idProject);
+  }, [idProject]);
 
-  console.log(project);
+  {
+    idProject
+      ? (document.title = `Noboss | ${project.nameProject}`)
+      : (document.title = `Noboss | Viví de lo Tuyo`);
+  }
+
+
+
+  if (idProject === "") {
+    return (
+      <ProjectContext.Provider value={{ projects, setIdProject }}>
+        {children}
+      </ProjectContext.Provider>
+    );
+  }
 
   return (
-    <ProjectContext.Provider value={{ project }}>
+    <ProjectContext.Provider
+      value={{ projects, project, setIdProject, idProject }}
+    >
       {children}
     </ProjectContext.Provider>
   );

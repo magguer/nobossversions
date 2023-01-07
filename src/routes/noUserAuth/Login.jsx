@@ -18,10 +18,11 @@ import ButtonBasic1 from "../../components/Buttons/ButtonText1";
 import TitleForm from "../../components/Forms/TitleForm";
 import ButtonGoogleSignIn from "../../components/Buttons/ButtonGoogleSignIn";
 import ButtonLoading from "../../components/Buttons/ButtonLoading";
+import SmoothieOpcIn from "../../transitions/SmoothieOpcIn";
 
 const Login = () => {
   // useContext
-  const { loginEmailUser } = useContext(UserContext);
+  const { loginEmailUser, loginGoogleUser } = useContext(UserContext);
 
   // Navigate
   const navigate = useNavigate();
@@ -55,54 +56,70 @@ const Login = () => {
     }
   };
 
+  const signInGoogle = async () => {
+    try {
+      setLoading(true);
+      await loginGoogleUser();
+      navigate("/management");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="bg-lightbgprimary dark:bg-darkbgprimary px-10 py-5 rounded-lg">
-      <TitleForm textTitle={"Ingreso de Usuario"} />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <FormErrors error={errors.firebase} />
+    <SmoothieOpcIn>
+      <div className="scrollbar  bg-lightbgprimary dark:bg-darkbgprimary  px-10 py-5 rounded-lg">
+        <TitleForm textTitle={"Ingreso de Usuario"} />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormErrors error={errors.firebase} />
 
-        <FormInputsText
-          type="email"
-          placeholder="Email"
-          error={errors.email}
-          {...register("email", {
-            required,
-            pattern: patternEmail,
-          })}
-        >
-          <FormErrors error={errors.email} />
-        </FormInputsText>
+          <FormInputsText
+            type="email"
+            placeholder="Escriba un Email"
+            error={errors.email}
+            {...register("email", {
+              required,
+              pattern: patternEmail,
+            })}
+          >
+            <FormErrors error={errors.email} />
+          </FormInputsText>
 
-        <FormInputsText
-          type="password"
-          placeholder="Inserte contraseña"
-          name="password"
-          id="password"
-          error={errors.password}
-          {...register("password", {
-            required,
-            minLength,
-            validate: validateNoSpace,
-          })}
-        >
-          <FormErrors error={errors.password} />
-        </FormInputsText>
+          <FormInputsText
+            type="password"
+            placeholder="Escriba una Contraseña"
+            name="password"
+            id="password"
+            error={errors.password}
+            {...register("password", {
+              required,
+              minLength,
+              validate: validateNoSpace,
+            })}
+          >
+            <FormErrors error={errors.password} />
+          </FormInputsText>
 
-        <div className="text-center mb-3">
-          {loading ? (
-            <ButtonLoading />
-          ) : (
-            <ButtonBasic1 textButton={"Acceder"} type="submit" />
-          )}
-        </div>
-        <div className="text-center mb-3">
-          <ButtonGoogleSignIn />
-        </div>
-        <div className="text-center">
-          <NavLink to="/register">¿No tienes usuario? Registrate acá.</NavLink>
-        </div>
-      </form>
-    </div>
+          <div className="text-center mb-3">
+            {loading ? (
+              <ButtonLoading />
+            ) : (
+              <ButtonBasic1 textButton={"Acceder"} type="submit" />
+            )}
+          </div>
+          <div className="text-center mb-3">
+            <ButtonGoogleSignIn onClick={signInGoogle} />
+          </div>
+          <div className="text-center">
+            <NavLink to="/register">
+              ¿No tienes usuario? Registrate acá.
+            </NavLink>
+          </div>
+        </form>
+      </div>
+    </SmoothieOpcIn>
   );
 };
 

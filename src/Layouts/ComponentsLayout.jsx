@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const ComponentsLayout = () => {
   return (
-    <div className=" bg-gray-700 dark:bg-[#1a1a1a] rounded-lg ">
+    <div className="bg-gray-700 dark:bg-darkbgsecondary rounded-lg ">
       <Outlet></Outlet>
     </div>
   );

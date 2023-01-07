@@ -2,44 +2,61 @@ import { useState } from "react";
 import ButtonMenuBurguer from "../Buttons/ButtonMenuBurguer";
 import ButtonText1 from "../Buttons/ButtonText1";
 document.documentElement.classList.add("dark");
-const BurguerMenuBody = ({ activeMenu }) => {
-  const [setBurguerMenu] = useState({ activeMenu });
-
+const BurguerMenuBody = ({ setBurguerMenu, burguerMenu }) => {
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
   };
 
   const outClick = () => {
-    return setBurguerMenu(!activeMenu);
+    setBurguerMenu(!burguerMenu);
   };
 
   return (
     <>
       <div
+        onClick={outClick}
         className={`${
-          activeMenu
-            ? "transition-all duration-300 ease-in inset-0 fixed bg-lightbgsecondary dark:bg-darkbgsecondary bg-opacity-75 dark:bg-opacity-75 "
+          burguerMenu
+            ? "transition-all duration-300 ease-in cursor-pointer inset-0 fixed bg-lightbgsecondary dark:bg-darkbgsecondary bg-opacity-75 dark:bg-opacity-75 "
             : "transition-all duration-300 ease-in inset-0 bg-lightbgsecondary dark:bg-darkbgprimary bg-opacity-0 dark:bg-opacity-0"
         }`}
       >
         <div
           className={`${
-            activeMenu
-              ? " w-full h-full scrollbar scrollbar-thumb-lightbgsecondary dark:scrollbar-thumb-darkbgsecondary dark:scrollbar-track-[#202020] pb-20 tablet:w-96 tablet:h-full fixed transition-all duration-500 shadow-lg bg-lightbgprimary dark:bg-darkbgprimary pt-20"
+            burguerMenu
+              ? " w-full h-full scrollbar pb-20 tablet:w-96 tablet:h-full fixed transition-all duration-500 shadow-lg bg-lightbgprimary dark:bg-darkbgprimary pt-20"
               : " w-full h-0 tablet:w-0 tablet:h-full fixed transition-all duration-500 pt-20 ease-in"
           }`}
         >
           <div
             className={`${
-              activeMenu
+              burguerMenu
                 ? "opacity-100 visible grid items-center transition-all duration-1000"
                 : "opacity-0 invisible grid items-center transition-all duration-200"
             }`}
           >
-            <ButtonMenuBurguer textButton={"¿Quiénes Somos?"} />
-            <ButtonMenuBurguer textButton={"¿Qué puedo hacer en Noboss?"} />
-            <ButtonMenuBurguer textButton={"Trabaja con nosotros"} />
-
+            <div onClick={outClick}>
+              <ButtonMenuBurguer
+                navigate={"/somos"}
+                textButton={"¿Quiénes Somos?"}
+              />
+            </div>
+            <div onClick={outClick}>
+              <ButtonMenuBurguer
+                navigate={"/quehacer"}
+                textButton={"¿Qué puedo hacer en Noboss?"}
+              />
+            </div>
+            <ButtonMenuBurguer
+              navigate={"/planes"}
+              textButton={"Sobre los Planes Premium"}
+            />
+            <div onClick={outClick}>
+              <ButtonMenuBurguer
+                navigate={"/equipo"}
+                textButton={"Únete al equipo"}
+              />
+            </div>
             <div className="mx-auto mt-10 ">
               <ButtonText1 onClick={toggleDarkMode} textButton={"Dia/Noche"} />
             </div>

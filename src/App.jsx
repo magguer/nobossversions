@@ -1,10 +1,6 @@
 // Imports React Router
 import { Routes, Route } from "react-router-dom";
 
-// Imports React
-import { useContext } from "react";
-import { UserContext } from "./context/UserProvider";
-
 // FireBase Components
 import RequireAuth from "./context/RequireAuth";
 
@@ -15,6 +11,16 @@ import UserData from "./routes/UserData";
 import RegisterUser from "./routes/noUserAuth/RegisterUser";
 import ManagementRoute from "./routes/ManagementRoute";
 import ExploreRoute from "./routes/ExploreRoute";
+import SomosRoute from "./routes/noUserAuth/SomosRoute";
+import QueHacerRoute from "./routes/noUserAuth/QueHacerRoute";
+import PlanesRoute from "./routes/noUserAuth/PlanesRoute";
+import EquipoRoute from "./routes/noUserAuth/EquipoRoute";
+import ClientesRoute from "./routes/Management/ClientesRoute";
+import InventarioRoute from "./routes/Management/InventarioRoute";
+import ServiciosRoute from "./routes/Management/ServiciosRoute";
+import AgendaRoute from "./routes/Management/AgendaRoute";
+import ResumenRoute from "./routes/Management/ResumenRoute";
+import ComunidadRoute from "./routes/Management/ComunidadRoute";
 
 // Componentes
 import Header from "./components/Header";
@@ -25,10 +31,10 @@ import NavFooter from "./components/NavFooter";
 // Layouts
 import BodyLayout from "./Layouts/BodyLayout";
 import LayoutContainerForm from "./Layouts/LayoutContainerForm";
+import YourProjectLayout from "./Layouts/YourProjectsLayout";
+
 
 const App = () => {
-  const { user } = useContext(UserContext);
-
   if (
     localStorage.theme === "dark" ||
     (!("theme" in localStorage) &&
@@ -39,25 +45,34 @@ const App = () => {
     document.documentElement.classList.remove("dark");
   }
 
-  if (user === false) {
-    return <div className="flex justify-center mt-28 h-full"></div>;
-  }
-
   return (
     <>
-      <Header />
-
+      <div className="fixed w-full">
+        <Header />
+      </div>
       <Routes>
         <Route path="/" element={<BodyLayout />}>
           <Route index element={<Home />} />
           <Route path="/market" element={<MarketRoute />} />
           <Route path="/explore" element={<ExploreRoute />} />
+          <Route path="/somos" element={<SomosRoute />} />
+          <Route path="/quehacer" element={<QueHacerRoute />} />
+          <Route path="/planes" element={<PlanesRoute />} />
+          <Route path="/equipo" element={<EquipoRoute />} />
 
           {/*  Rutas Protegidas */}
           <Route path="/" element={<RequireAuth />}>
             <Route path="/userdata" element={<UserData />} />
-            <Route path="/management" element={<ManagementRoute />}></Route>
-            <Route path="/:nameProject" element={<ManagementRoute />}></Route>
+            <Route path="/" element={<YourProjectLayout />}>
+              <Route path="/usermarket" element={<MarketRoute />} />
+              <Route path="/management" element={<ManagementRoute />} />
+              <Route path="/clientes" element={<ClientesRoute />} />
+              <Route path="/inventario" element={<InventarioRoute />} />
+              <Route path="/servicios" element={<ServiciosRoute />} />
+              <Route path="/agenda" element={<AgendaRoute />} />
+              <Route path="/resumen" element={<ResumenRoute />} />
+              <Route path="/comunidad" element={<ComunidadRoute />} />
+            </Route>
           </Route>
 
           {/* Ruta inexistentes (404) */}
