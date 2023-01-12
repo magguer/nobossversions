@@ -33,7 +33,6 @@ import BodyLayout from "./Layouts/BodyLayout";
 import LayoutContainerForm from "./Layouts/LayoutContainerForm";
 import YourProjectLayout from "./Layouts/YourProjectsLayout";
 
-
 const App = () => {
   if (
     localStorage.theme === "dark" ||
@@ -51,6 +50,7 @@ const App = () => {
         <Header />
       </div>
       <Routes>
+        {/* Rutas sin Log-in */}
         <Route path="/" element={<BodyLayout />}>
           <Route index element={<Home />} />
           <Route path="/market" element={<MarketRoute />} />
@@ -76,7 +76,7 @@ const App = () => {
           </Route>
 
           {/* Ruta inexistentes (404) */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<MarketRoute />} />
         </Route>
 
         <Route path="/" element={<LayoutContainerForm />}>

@@ -33,6 +33,7 @@ const CreateProjectBody1 = ({ crateProjectVisible, onClose }) => {
     "Venta de Variedad",
     "Productos Naturales",
     "Gestión Digital",
+    "Packaging/Envases",
   ];
 
   const handleSelectRubros = ({ value }) => {
@@ -56,7 +57,6 @@ const CreateProjectBody1 = ({ crateProjectVisible, onClose }) => {
     e.preventDefault();
     const logoProject = await addImageProject(imgProjectData);
     await addProject(nameProjectData, rubroProjectData, logoProject);
-
     onClose();
   };
 
@@ -131,6 +131,7 @@ const CreateProjectBody1 = ({ crateProjectVisible, onClose }) => {
 
                   <div className="modal-actions grid gap-3">
                     <ButtonText2
+                      onClick={handleSubmit}
                       loading={loading.addImageProject}
                       type="submit"
                       textButton={"Crear Proyecto"}

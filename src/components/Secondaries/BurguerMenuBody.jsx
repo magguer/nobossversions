@@ -24,8 +24,8 @@ const BurguerMenuBody = ({ setBurguerMenu, burguerMenu }) => {
         <div
           className={`${
             burguerMenu
-              ? " w-full h-full scrollbar pb-20 tablet:w-96 tablet:h-full fixed transition-all duration-500 shadow-lg bg-lightbgprimary dark:bg-darkbgprimary pt-20"
-              : " w-full h-0 tablet:w-0 tablet:h-full fixed transition-all duration-500 pt-20 ease-in"
+              ? " w-full h-full scrollbar pb-20 tablet:w-96 tablet:h-full fixed transition-all duration-500 top-1 shadow-lg bg-lightbgprimary dark:bg-darkbgprimary pt-20"
+              : " w-full top-[-100px] h-0 tablet:w-0 tablet:h-full fixed transition-all duration-500 pt-20 ease-in"
           }`}
         >
           <div

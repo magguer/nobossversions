@@ -45,23 +45,22 @@ const ClientesBody = ({ path }) => {
 
   return (
     <SubComponentsBody2 link={"/management"} textTitle={"Clientes de"}>
-      <div className="flex gap-3 my-2 justify-center">
-        <div className="scrollbar rounded h-96 mobilL:w-[500px] tablet:w-[1000px]">
-          <div className="flex p-1 gap-1 items-center tablet:gap-3 justify-center">
+      <div className="flex h-full gap-3 justify-center">
+        <div className="scrollbar h-96 pb-2 w-[500px] tablet:w-[1000px]">
+          <div className="flex p-1 pt-2 gap-1 items-center tablet:gap-3 justify-center">
             <BuscadorItems1 placeholder={"Buscar cliente / teléfono / email..."} />
             <ButtonText2 /* onClick={handleShowAddItem} */ textButton={"+"} />
           </div>
 
           {/* Lista de Productos */}
           {clients?.map((client) => (
-            <>
+            <div key={client.nameClient}>
               <ClientBody1
-                key={client.id}
                 handleShowProfileClient={handleShowProfileClient}
                 handleShowConfigClient={handleShowConfigClient}
                 client={client}
               />
-            </>
+            </div>
           ))}
         </div>
       </div>

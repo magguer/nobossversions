@@ -28,9 +28,9 @@ const NavFooter = () => {
   };
 
   const closedProjectBox =
-    "opacity-0 bg-lightbgprimary dark:bg-darkbgprimary justify-center flex absolute gap-5 px-5 py-2 rounded-md bottom-[-50px] transition-all duration-500";
+    "opacity-0 bg-lightbgprimary dark:bg-darkbgprimary justify-center flex items-center absolute gap-5 px-5 py-2 rounded-md bottom-[-50px] transition-all duration-500";
   const openPorojectBox =
-    "opacity-1 bg-lightbgprimary dark:bg-darkbgprimary justify-center flex absolute gap-5 px-5 py-2 rounded-md bottom-[60px] transition-all duration-500";
+    "opacity-1 bg-lightbgprimary dark:bg-darkbgprimary justify-center flex items-center  absolute gap-5 px-5 py-2 rounded-md bottom-[60px] transition-all duration-500";
 
   return (
     <>
@@ -45,12 +45,16 @@ const NavFooter = () => {
                 <ProjectBody
                   expandedYourProjectsBody
                   imgProject={project.imgProject}
-                  nameProject={project.nameProject}
-                  rubroProject={project.rubroProject}
                 />
               </NavLink>
             </div>
           ))}
+          <div
+            /* onClick={() => setShowCrateProject(true)} */
+            className=" text-white bg-lightbuttonprimary hover:bg-lightbuttonhoverprimary focus:ring-2 focus:outline-none focus:ring-lightbuttonringprimary  dark:bg-darkbuttonprimary dark:hover:bg-darkbuttonhoverprimary dark:focus:ring-darkbuttonringprimary flex cursor-pointer w-10  py-1 rounded duration-500 justify-center items-center transition-all "
+          >
+            <span className="text-lg tablet:text-2xl">+</span>
+          </div>
         </div>
 
         {user ? (
@@ -62,26 +66,24 @@ const NavFooter = () => {
             </div>
             <div>
               {project ? (
-               
-                  <div
-                    onClick={handleProjectsBox}
-                  >
-                    <ButtonIcon1 src={project.imgProject} alt="homeIcon" />
-                  </div>
-           
-              ) : (
-              
-                <div
-                  onClick={handleProjectsBox}
-                >
-                  <ButtonIcon1 src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2F01-home-icon-blanco.png?alt=media&token=0aea7cfe-3a83-443d-a059-f04ec48449cd" alt="homeIcon" />
+                <div onClick={handleProjectsBox}>
+                  <ButtonIcon1 src={project.imgProject} alt="homeIcon" />
                 </div>
-               
+              ) : (
+                <div onClick={handleProjectsBox}>
+                  <ButtonIcon1
+                    src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2F01-home-icon-blanco.png?alt=media&token=0aea7cfe-3a83-443d-a059-f04ec48449cd"
+                    alt="homeIcon"
+                  />
+                </div>
               )}
             </div>
             <div className="justify-self-end">
               <NavLink to="/usermarket">
-                <ButtonIcon1 src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Fcarrito%201.png?alt=media&token=9aad05a4-5039-40b8-9a24-585df898f7dd" alt="marketIcon" />
+                <ButtonIcon1
+                  src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Fcarrito%201.png?alt=media&token=9aad05a4-5039-40b8-9a24-585df898f7dd"
+                  alt="marketIcon"
+                />
               </NavLink>
             </div>
           </>
@@ -89,7 +91,10 @@ const NavFooter = () => {
           <>
             <div className="justify-self-end">
               <NavLink to="/market">
-                <ButtonIcon1 src="iconos\market-icon.png" alt="marketIcon" />
+                <ButtonIcon1
+                  src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Fcarrito%201.png?alt=media&token=9aad05a4-5039-40b8-9a24-585df898f7dd"
+                  alt="marketIcon"
+                />
               </NavLink>
             </div>
             <div>
@@ -97,7 +102,7 @@ const NavFooter = () => {
                 <div>
                   <ButtonTextIcon1
                     textButton={"Acceder"}
-                    src="iconos\user-icon.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficono%20usuario%20blanco.png?alt=media&token=3ad98721-d5d8-4ff6-907c-25c945a71d4d"
                   />
                 </div>
               </NavLink>

@@ -7,14 +7,17 @@ import TextH1 from "../../Texts/TextH1";
 import TextH3 from "../../Texts/TextH3";
 import TextH2 from "../../Texts/TextH2";
 import Paragraf1 from "../../Texts/Paragraf1";
+import { ProjectContext } from "../../../context/ProjectProvider";
 
 const UserProfileBody = () => {
+  const { setIdProject } = useContext(ProjectContext);
   const { user, signOutEmailUser } = useContext(UserContext);
 
   const navigate = useNavigate();
   const handleUserLogout = async () => {
     try {
       await signOutEmailUser();
+      setIdProject("")
       navigate("/login");
     } catch (error) {
       console.log(error);

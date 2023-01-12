@@ -15,7 +15,7 @@ const ExplorerBody = () => {
   } */
 
   return (
-    <div className="grid justify-items-center bg-lightbgprimary dark:bg-darkbgprimary rounded-lg p-5 shadow-lg">
+    <div className="grid justify-items-center text-center bg-lightbgprimary dark:bg-darkbgprimary rounded-lg p-5 shadow-lg">
       <TextH1 textTitle={" - Explorador de Proyectos - "} />
       <TextH3
         textTitle={

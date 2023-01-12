@@ -20,7 +20,7 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <UserProvider>
     <ProjectProvider>
-      <div className="bg-lightbgunder text-white dark:bg-darkbgunder h-screen w-full fixed">
+      <div className="bg-lightbgunder text-white dark:bg-darkbgunder scrollbar h-screen w-full fixed">
         <BrowserRouter>
           <App />
         </BrowserRouter>

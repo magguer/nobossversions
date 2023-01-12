@@ -27,20 +27,20 @@ const useProducts = () => {
     }
 
     // Agregar un  Producto
-    const addProduct = async (nameProductData, skuProductData, descProductData, priceProductData, priceSellerProductDatax, totalCostProductData, stockProductData, path) => {
+    const addProduct = async (nameProduct, skuProduct, descProduct, priceProduct, priceSellerProductDatax, totalCostProduct, stockProduct, path) => {
         try {
             setLoading(prev => ({ ...prev, addProduct: true }))
             const newProduct = {
-                nameProductData,
-                skuProductData,
-                descProductData,
+                nameProduct,
+                skuProduct,
+                descProduct,
                 /* imgProduct, */
                 createTimeProject: serverTimestamp(),
                 projectId: idProject,
-                priceProductData,
-                priceSellerProductData,
-                totalCostProductData,
-                stockProductData,
+                priceProduct,
+                priceSellerProduct,
+                totalCostProduct,
+                stockProduct,
             }
             const projectPathRef = doc(db, path, newProduct)
             await addDoc(collection(projectPathRef), { newProduct })

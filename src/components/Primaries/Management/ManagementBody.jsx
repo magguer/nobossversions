@@ -7,6 +7,8 @@ import { ProjectContext } from "../../../context/ProjectProvider";
 // Import Components
 import ButtonManagBody1 from "../../Buttons/ButtonManagBody1";
 import ButtonManagBody2 from "../../Buttons/ButtonManagBody2";
+import ButtonManagBody3 from "../../Buttons/ButtonManagBody3";
+import ButtonManagBody4 from "../../Buttons/ButtonManagBody4";
 import ButtonManagBody2Bloqued from "../../Buttons/ButtonManagBody2Bloqued";
 import Carousel1 from "../../Carousels/Carousel1";
 import TextH1 from "../../Texts/TextH1";
@@ -16,7 +18,7 @@ import ComunidadBody from "./Comunidad/ComunidadBody";
 import ProjectConfigBody from "../Projects/ProjectConfigBody";
 import ButtonManagGasto from "../../Buttons/ButtonManagGasto";
 import ButtonManagVenta from "../../Buttons/ButtonManagVenta";
-import ButtonManagBody3 from "../../Buttons/ButtonManagBody3";
+
 import ButtonBack from "../../Buttons/ButtonBack1";
 import TextH2 from "../../Texts/TextH2";
 import FacturaVentaBody from "./Venta/FacturaVentaBody";
@@ -37,7 +39,7 @@ const ManagementBody = () => {
   return (
     <>
       {project ? (
-        <div>
+        <div className="h-[550px] scrollbar pb-44 mobilL:pb-0">
           <ButtonBack
             textButton={"<"}
             onClick={() => {
@@ -45,7 +47,7 @@ const ManagementBody = () => {
               document.title = `Noboss | Viví de lo Tuyo`
             }}
           />
-          <div className="grid w-full scrollbar max-h-[550px] tablet:max-h-[480px] bg-lightbgprimary dark:bg-darkbgprimary rounded-lg p-3 tablet:px-5 pb-40 tablet:pb-5 shadow-lg ">
+          <div className="grid w-full scrollbar  max-h-[550px] tablet:max-h-[480px] bg-lightbgprimary dark:bg-darkbgprimary rounded-lg p-3 tablet:px-5 pb-5 tablet:pb-5 shadow-lg ">
             {/*       Encabezado Panel Gestión */}
 
             <div className="flex justify-center tablet:mb-3">
@@ -80,7 +82,8 @@ const ManagementBody = () => {
                 {/*       Boton Gasto      */}
                 <div className="hidden tablet:flex">
                   <ButtonManagGasto
-                    textButton="Registrar Gasto"
+                    textButton="Registrar"
+                    textButton2="Gasto"
                     src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2Fgasto-png-blanco.png?alt=media&token=bd0e0041-7191-4fd6-9629-9dd729efda12"
                     onClick={() => setShowGastoBody(true)}
                   />
@@ -91,14 +94,14 @@ const ManagementBody = () => {
                       <h1>Panel</h1>
                       <TextH2 textTitle="Administrador" />
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 items-center">
                       <ButtonManagBody3
-                        textButton="Comunidad"
+       
                         src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2Fclientes-comunidad-icon.png?alt=media&token=92eb6a20-7ecc-45ee-a044-17dc30c9a627 "
                         link={"/comunidad"}
                       />
-                      <ButtonManagBody3
-                        textButton="Resumen"
+                      <ButtonManagBody4
+ 
                         src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2Fresumen-icon.png?alt=media&token=294a0d39-3de9-4f65-9a49-76f966847896"
                         link={"/resumen"}
                       />
@@ -149,14 +152,16 @@ const ManagementBody = () => {
                 <div className="flex gap-3 justify-center">
                   <div className="tablet:hidden w-full">
                     <ButtonManagGasto
-                      textButton="Registrar Gasto"
+                      textButton="Registrar"
+                      textButton2="Gasto"
                       src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2Fgasto-png-blanco.png?alt=media&token=bd0e0041-7191-4fd6-9629-9dd729efda12"
                       onClick={() => setShowGastoBody(true)}
                     />
                   </div>
 
                   <ButtonManagVenta
-                    textButton="Facturar Venta"
+                    textButton="Facturar"
+                    textButton2="Venta"
                     src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/nobossAppSimple%2Frecursos%2Ficonos%2Ficonos%20panel%2Fventa-png-blanca.png?alt=media&token=a204424c-2192-4f44-9c4d-adebd2911a1f"
                     onClick={() => setShowVentaBody(true)}
                   />

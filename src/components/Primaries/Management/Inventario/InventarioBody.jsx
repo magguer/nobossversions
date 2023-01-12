@@ -76,7 +76,7 @@ const InventarioBody = ({ path }) => {
                 /* product={product} */
               />
 
-              <div className="scrollbar rounded h-96 mobilL:w-[500px] tablet:w-[1000px]">
+              <div className="scrollbar rounded h-96 pb-2 w-[500px] tablet:w-[1000px]">
                 <div className="flex p-1 gap-1 items-center tablet:gap-3 justify-center">
                   <BuscadorItems1
                     placeholder={"Buscar productos / categorías..."}
@@ -86,14 +86,13 @@ const InventarioBody = ({ path }) => {
 
                 {/* Lista de Productos */}
                 {products?.map((product) => (
-                  <>
+                  <div key={product.skuProduct}>
                     <ItemBody1
-                      key={product.id}
                       handleShowProfileItem={handleShowProfileItem}
                       handleShowConfigItem={handleShowConfigItem}
                       product={product}
                     />
-                  </>
+                  </div>
                 ))}
               </div>
               <ConfigItemInventario

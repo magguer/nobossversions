@@ -21,7 +21,7 @@ const ProjectBody = ({
           />
         </div>
       ) : (
-        <div className="hidden w-12/12 tablet:flex items-center tablet:p-3 tablet:bg-lightbuttonprimary tablet:hover:bg-lightbuttonhoverprimary tablet:dark:bg-darkbuttonprimary tablet:dark:hover:bg-darkbuttonhoverprimary rounded transition-all duration-500 cursor-pointer">
+        <div className="hidden w-12/12 tablet:flex items-center tablet:p-3 tablet:bg-lightbuttonprimary tablet:hover:bg-lightbuttonhoverprimary tablet:dark:bg-darkbuttonprimary rounded transition-all duration-500 cursor-pointer">
           <img
             className="w-3/12 laptopL:w-2/12 h-full rounded-full"
             src={imgProject}

@@ -8,38 +8,74 @@ import { UserContext } from '../context/UserProvider'
 
 
 const useProjects = () => {
+
   const [projects, setProjects] = useState([])
+  const [providers, setProviders] = useState([])
+  const [specificProviders, setSpecificProviders] = useState([])
   const [project, setProject] = useState({})
   const [error, setError] = useState()
   const [loading, setLoading] = useState({})
   const { user } = useContext(UserContext)
 
+  // Obtener Proveedores Generales
 
+  const getProviders = async (projects) => {
+    try {
+      setLoading(prev => ({ ...prev, getProviders: true }));
+      const providersRef = collection(db, "projects");
+      const q = query(providersRef, where("projectProvider", "==", true));
+      const querySnapshot = await getDocs(q);
+      const providersData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setProviders(providersData);
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    } finally {
+      setLoading(prev => ({ ...prev, getProviders: false }));
+    }
+  }
 
+  // Obtener Proveedores Especificos
+
+  const getSpecificProviders = async (rubroProject) => {
+    try {
+      setLoading(prev => ({ ...prev, getProviders: true }));
+      const providersRef = collection(db, "projects");
+      const q = query(providersRef, where("projectProvider", "==", true), where("rubrosProvider", "array-contains", rubroProject));
+      const querySnapshot = await getDocs(q);
+      const providersData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setSpecificProviders(providersData);
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    } finally {
+      setLoading(prev => ({ ...prev, getProviders: false }));
+    }
+  }
 
 
   // Obtener Proyectos
 
   const getProjects = async () => {
     try {
-      setLoading(prev => ({ ...prev, getProjects: true }))
-      const projectsRef = collection(db, "projects")
+      setLoading(prev => ({ ...prev, getProjects: true }));
+      const projectsRef = collection(db, "projects");
       const q = query(projectsRef, where("uid", "array-contains", auth.currentUser.uid), orderBy("createTimeProject", "desc"));
       const querySnapshot = await getDocs(q);
-      const projectsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-      setProjects(projectsData)
+      const projectsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setProjects(projectsData);
     } catch (error) {
-      console.log(error)
-      setError(error.message)
+      console.log(error);
+      setError(error.message);
     } finally {
-      setLoading(prev => ({ ...prev, getProjects: false }))
+      setLoading(prev => ({ ...prev, getProjects: false }));
     }
   }
-
 
   useEffect(() => {
     getProjects();
   }, [user])
+
 
 
 
@@ -159,8 +195,10 @@ const useProjects = () => {
     }
   }
 
+
+
   return {
-    projects, project, error, loading, getProjects, getProject, addProject, deleteProject, addImageProject, addBannerProject, updateProject
+    projects, project, error, loading, getProject, addProject, deleteProject, addImageProject, addBannerProject, updateProject, providers, getProviders, getSpecificProviders, specificProviders
   }
 
 

@@ -54,7 +54,7 @@ const ServiciosBody = ({ path }) => {
             showProfileService={showProfileService}
             setShowProfileService={setShowProfileService}
           />
-          <div className="scrollbar rounded h-96 mobilL:w-[500px] tablet:w-[1000px]">
+          <div className="scrollbar rounded h-96 w-[500px] tablet:w-[1000px]">
             <div className="flex items-center p-1 gap-3 mt-3 justify-center">
               <BuscadorItems1
                 placeholder={"Buscar servicios / categorías..."}
@@ -63,14 +63,13 @@ const ServiciosBody = ({ path }) => {
             </div>
             {/* Lista de Productos */}
             {services?.map((service) => (
-              <>
+              <div key={service.nameService}>
                 <ServiceBody1
-                  key={service.id}
                   handleShowProfileService={handleShowProfileService}
                   handleShowConfigService={handleShowConfigService}
                   service={service}
                 />
-              </>
+              </div>
             ))}
           </div>
           <ConfigService

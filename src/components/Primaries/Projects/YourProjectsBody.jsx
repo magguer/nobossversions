@@ -1,5 +1,5 @@
 //Imports React
-import React, { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ProjectContext } from "../../../context/ProjectProvider";
 //Imports Components
 import CreateProjectBody1 from "./CreateProjectBody1";
@@ -7,12 +7,14 @@ import ProjectBody from "./ProjectBody";
 
 const YourProjectsBody = () => {
   
-  const { setIdProject, projects, idProject } = useContext(ProjectContext);
-
+  const { setIdProject, projects, idProject, setRubroProject, rubroProject } = useContext(ProjectContext);
   const [expandedYourProjectsBody, setExpandedYourProjectsBody] =
     useState(false);
   const [showCrateProject, setShowCrateProject] = useState(false);
   const handleOnCloseCreateProject = () => setShowCrateProject(false);
+
+
+
 
   if (projects.length === 0) {
     return (
@@ -55,8 +57,9 @@ const YourProjectsBody = () => {
       </div>
     );  */
 
-  const handleClickSendProject = (projectId) => {
+  const handleClickSendProject = (projectId, rubroProject) => {
     setIdProject(projectId);
+    setRubroProject(rubroProject);
   };
 
   return (
@@ -76,11 +79,11 @@ const YourProjectsBody = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              onClick={() => handleClickSendProject(project.id)}
+              onClick={() => handleClickSendProject(project.id, project.rubroProject)}
               className={
                 project.id === idProject
-                  ? "border-2 border-opacity-25 dark:border-darksecondarycolor rounded-md" 
-                  : ""
+                  ? "opacity-100 duration-200 transition-opacity" 
+                  : "opacity-50 hover:opacity-100 duration-200 transition-opacity"
               }
             >
               <ProjectBody
@@ -117,8 +120,8 @@ const YourProjectsBody = () => {
               onClick={() => handleClickSendProject(project.id)}
               className={
                 project.id === idProject
-                ? "border-2 dark:border-darksecondarycolor rounded-full border-opacity-25 transition-all duration-300"
-                : null
+                ? "opacity-100"
+                : "opacity-50 hover:opacity-100"
               }
             >
 
